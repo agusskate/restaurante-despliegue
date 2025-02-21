@@ -66,6 +66,7 @@ body {
 #video-landing-1 {
     opacity: 25%;
     position: absolute;
+    min-height: 1000px;
     top: 0;
     left: 0;
     width: 100%;
