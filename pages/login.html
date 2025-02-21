@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YONKO - Cocina japonesa tradicional</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+</head>
+<body class="login">
+    <section class="wrapper">
+        <form id="login-form" action="#" method="post">
+            <h1>Login</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="Username" class="username-field" required />
+                <i class="bx bxs-user-circle"></i> 
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" class="password-field" required />
+                <i class="bx bx-hide action-password"></i> 
+            </div>
+
+            <div id="error-message">
+            </div>
+
+            <button type="submit" class="button">Login</button>
+
+            <div class="register-link">
+                <p>Don't have a account? <a href="../pages/register.html">Register</a></p>
+            </div>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="../scripts/login.js"></script>
+    </section>
+</body>
+</html>
