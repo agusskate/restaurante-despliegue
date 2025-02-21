@@ -54,7 +54,8 @@ body {
 .background-landing {
     position: relative; /* Asegura que el video y el contenido se ajusten */
     width: 100%;
-    min-height: 1000px; /* Usa min-height en lugar de height fija */
+    min-height: 900px; /* Usa min-height en lugar de height fija */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,6 +67,7 @@ body {
 #video-landing-1 {
     opacity: 25%;
     position: absolute;
+    min-height: 900px;
     top: 0;
     left: 0;
     width: 100%;
