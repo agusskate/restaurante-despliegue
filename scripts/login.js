@@ -3,8 +3,7 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      let form = $(this);
-      let uri = form.attr("action");
+      let uri = "https://yonko-api.vercel.app/api/login";
   
       // Recuperar los datos del formulario
       let username = $(".username-field").val();
@@ -16,7 +15,7 @@ $(document).ready(function () {
         contentType: "application/json",
         dataType: "json",
         processData: false,
-        data: JSON.stringify({ name, username, password }),
+        data: JSON.stringify({ username, password }),
         success: function (response) {
           if (response.success) {
             let messageAccess = `<div class="card">
@@ -33,7 +32,7 @@ $(document).ready(function () {
                   </div>`;
             $("#error-message").append(messageAccess);
             setTimeout(() => {
-              window.location.href = "../pages/app.php";
+              window.location.href = "../pages/index.html";
             }, 500);
             
           } else if (response.message === "Incorrect password") {

@@ -3,8 +3,8 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      let form = $(this);
-      let uri  = form.attr("action");
+      let uri = "https://yonko-api.vercel.app/api/register";
+
   
       // Recuperar los datos del formulario
       let name = $(".name-field").val();
