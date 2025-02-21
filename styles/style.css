@@ -10,7 +10,10 @@
     font-style: normal;
 }
 
-
+/* ICON */
+#icon, #icon2{
+    color:rgb(255, 220, 19);
+}
 body {
     background-color: black;
     color: white; /* Para que el texto se vea en el fondo negro */
@@ -44,7 +47,6 @@ body {
 
 
 /* CONTAINER LANDING */
-
 .container-landing{
     display: flex;
     flex-direction: column;
@@ -61,6 +63,7 @@ body {
     justify-content: center;
     text-align: center;
     color: white;
+    border-bottom:2px solid rgba(189, 138, 0, 0.87);
 
 }
 
@@ -74,7 +77,6 @@ body {
     height: 100vh;
     object-fit: cover;
     z-index: -1;
-    border-bottom:5px solid rgba(189, 138, 0, 0.87);
 }
 .intro{
     display: flex;
@@ -93,6 +95,7 @@ body {
     font-family: 'Japan', sans-serif;
     font-size: 40px;
     font-weight: 100px;
+    color: rgb(255, 220, 19);
     z-index: 1;
 }
 .imagen-intro img{
@@ -147,8 +150,16 @@ body {
 
 
 /*LANDING CARTA*/
+.logo-carta-landing{
+
+}
+.logo-carta-landing img{
+    width: 50px;
+}
 
 .carta-landing {
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     min-height: 800px; /* Usa min-height en lugar de height */
     display: flex;
@@ -187,7 +198,8 @@ body {
 
 /* RESERVAS */
 .section-container {
-    border-top: 5px solid rgba(189, 139, 0, 0.377);
+    border-top:2px solid rgba(189, 138, 0, 0.87);
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -196,7 +208,9 @@ body {
     padding-bottom: 20px;
     width: 100%;
 }
-
+.content-number{
+    margin-bottom: 15px;
+}
 .video-container {
     flex: 2;
     display: flex;
@@ -247,7 +261,8 @@ body {
 
 /* FOOTER */
 .footer {
-    border-top:5px solid rgba(189, 138, 0, 0.87);
+    border-top:2px solid rgba(189, 138, 0, 0.87);
+
     background: rgba(0, 0, 0, 0.9);
     color: white;
     text-align: center;
@@ -304,20 +319,66 @@ body {
 }
 
 
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1130px) {
+    .section-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .content-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .content-description{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+}
 /* RESPONSIVE TABLET */
 @media (max-width: 700px) {
+    .header {
+        gap: 5%;
+    }
+    .fa-solid fa-user{
+        height: 10px;
+        width: 10px;
+    }
+    .section-container{
+        display: flex;
+        flex-direction: column;
+    }
     .intro h1 {
         font-size: 90px;
     }
     .intro p {
         font-size: 25px;
     }
+    .intro-texto{
+        font-size: 20px;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+    .intro-carta{
+        width: 90%;
+    }
 }
 
 /* MOVIL */
 @media (max-width: 400px) {
+    .intro-carta{
+        width: 90%;
+    }
+    .content-title{
+        font-size: 20px;
+    }
+    .content-description{
+        font-size: 15px;
+    }
     .background-landing {
-
         min-height: 900px; /* Usa min-height en lugar de height fija */
     }
     .intro h1 {
