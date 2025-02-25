@@ -11,7 +11,7 @@ $(document).ready(function () {
   
       $.ajax({
         type: "POST",
-        url: "https://yonko-api.vercel.app/login",
+        url: "https://yonko-api.vercel.app/api/login",
         contentType: "application/json",
         dataType: "json",
         processData: false,
