@@ -3,19 +3,19 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      let uri = "https://yonko-api.vercel.app/login"; 
-  
       // Recuperar los datos del formulario
-      let username = $(".username-field").val();
-      let password = $(".password-field").val();
+      let dataClient = {
+        username: $(".username-field").val(),
+        password: $(".password-field").val()
+      }
   
       $.ajax({
         type: "POST",
-        url: uri,
+        url: "https://yonko-api.vercel.app/login",
         contentType: "application/json",
         dataType: "json",
         processData: false,
-        data: JSON.stringify({ username, password }),
+        data: JSON.stringify(dataClient),
         success: function (response) {
           if (response.success) {
             let messageAccess = `<div class="card">
@@ -50,7 +50,7 @@ $(document).ready(function () {
                       <i class="bx bx-x cross-icon"></i>
                   </div>`;
             $("#error-message").append(messageError);
-          } else {
+          } else if (response.message === "User not exits") {
             $(".username-field").val("");
             $(".password-field").val("");    
             let messageError = `<div class="card">
