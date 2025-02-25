@@ -3,7 +3,7 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      let uri = "https://yonko-api.vercel.app/login";
+      let uri = "https://yonko-api.vercel.app/login"; 
   
       // Recuperar los datos del formulario
       let username = $(".username-field").val();
