@@ -116,7 +116,7 @@ body {
     box-sizing: border-box;
     padding: 10px 15px;
     background-color: #fffffffb;
-    box-shadow: rgb(255, 255, 255) 0px 8px 24px;
+    box-shadow: rgba(112, 112, 112, 0.5) 0px 8px 24px;
     position: relative;
     overflow: hidden;
     display: flex;
