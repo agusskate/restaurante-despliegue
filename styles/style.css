@@ -257,8 +257,6 @@ body {
     color: black;
 }
 
-
-
 /* FOOTER */
 .footer {
     border-top:2px solid rgba(189, 138, 0, 0.87);
@@ -317,8 +315,6 @@ body {
     font-size: 14px;
     color: gray;
 }
-
-
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1130px) {
