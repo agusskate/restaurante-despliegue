@@ -10,7 +10,7 @@ $(document).ready(function () {
       let password = $(".password-field").val();
   
       $.ajax({
-        type: "POST",
+        type: "GET",
         url: uri,
         contentType: "application/json",
         dataType: "json",
