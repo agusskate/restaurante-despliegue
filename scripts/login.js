@@ -18,6 +18,7 @@ $(document).ready(function () {
         data: JSON.stringify(dataClient),
         success: function (response) {
           if (response.success) {
+            localStorage.setItem("session", response.session);
             let messageAccess = `<div class="card">
                       <div class="icon-container-access">
                         <i class="bx bx-check-circle icon-access"></i>
@@ -32,7 +33,7 @@ $(document).ready(function () {
                   </div>`;
             $("#error-message").append(messageAccess);
             setTimeout(() => {
-              window.location.href = "../pages/index.html";
+              window.location.href = "https://yonko-eta.vercel.app/";
             }, 500);
             
           } else if (response.message === "Incorrect password") {
