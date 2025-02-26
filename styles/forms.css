@@ -16,11 +16,13 @@ body {
 }
 
 .login {
-    background-image: url('../assets/images/login.webp');
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+  url("../assets/images/loginback.png") center/cover no-repeat;
 }
 
 .register {
-    background-image: url('../assets/images/register.webp');
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+  url("../assets/images/registerback.png") center/cover no-repeat;
 }
 
 .wrapper {
