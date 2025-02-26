@@ -217,6 +217,10 @@ body {
         margin-bottom: 200px;
     }
 
+    h3, .item__price{
+        font-family: 'Japan', sans-serif !important;
+        font-size: 12px;
+    }
 
     .carta-landing {
         width: 100%;
@@ -309,7 +313,7 @@ body {
   .item__title {
     font-family: 'Japan', sans-serif;
 
-	font: 35px cookie, cursive;
+	font: 30px cookie, cursive;
 	color: var(--wesbos);
 	letter-spacing: 2px;
 	margin: 0;
@@ -321,13 +325,37 @@ body {
 	margin: 0 15px;
   }
   
+
+  .item__button {
+    font-family: 'Japan', sans-serif !important;
+    background: linear-gradient(45deg, #ffd700, #ffac33);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin-bottom: 40px;
+  }
+
+  .item__button:hover {
+    background: linear-gradient(45deg, #ffac33, #ffd700);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  }
+
+  .item__button:active {
+    background: linear-gradient(45deg, #e6be00, #d4a017);
+    transform: scale(0.95);
+  }
+
   .item__price {
 	color: var(--wesbos);
-	font: 31px cookie, cursive;
+	font: 25px cookie, cursive;
   }
   
   .item__description {
-	margin-bottom: 40px;
+	margin-bottom: 10px;
   }
   
   .buttons-container {

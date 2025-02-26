@@ -94,6 +94,9 @@ input {
     border: 1px solid rgb(255, 255, 255);
     padding: 10px;
     border-radius: 5px;
+    transition: all 0.3s ease;
+    font-family: 'Japan', sans-serif !important;
+
 }
 
 input[type="date"],
