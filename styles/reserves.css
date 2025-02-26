@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace; /* modificar despues */
+}
+
+.reserves {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/images/background-reserves.jpg") center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card-img {
+    background: url("../assets/images/food-shushi.jpg") center/cover no-repeat;
+}
+
+.reserves h2 {
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.card-content {
+    background-color: white;
+    height: 330px;
+}
+
+.card-content h3 {
+    color: black;
+    text-align: center;
+    padding: 25px 0 10px 0;
+    font-size: 26px;
+}
+
+.form-row {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-row-2 {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-row-2 a {
+    color: salmon;
+    font-weight: bolder;
+    transition: all 0.2 ease;
+}
+
+.form-row-2 a:hover {
+    color: rgba(250, 128, 114, 0.7);
+}
+
+form input {
+    display: block;
+    width: 100%;
+    margin: 15px 12px;
+    padding: 12.5px;
+    font-size: 15px;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+
+form input[type = text],
+form input[type = number],
+form input::placeholder {
+    color: black;
+}
+
+form input[type = submit] {
+    color: white;
+    background-color: salmon;
+    padding: 12px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type = submit]:hover {
+    background-color: rgba(250, 128, 114, 0.9);
+}
+
+@media (max-width: 992px) {
+    .card-container {
+        grid-template-columns: 100%;
+    }
+
+    .card-img {
+        height: 330px;
+    }
+}
+
+@media (max-width: 500px) {
+    .reserves h2 {
+        padding-top: 40px;
+        padding-bottom: 5px;
+    }
+    
+     .card-container {
+        width: 90%;
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/reserves.css" />
+  </head>
+  <body>
+    <section class="reserves">
+      <h2>RESERVA TU MESA AHORA</h2>
+      <div class="card-container">
+        <div class="card-img"></div>
+
+        <div class="card-content">
+          <h3>Reserva en Yonko</h3>
+          <form action="#" id="reserves-form">
+            <div class="form-row">
+              <input type="date" name="fecha" class="fecha" required />
+              <input type="time" name="horario" class="horario" required />
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="nombre" placeholder="Nombre" class="nombre" required />
+              <input type="text" name="telefono" placeholder="Télefono" class="telefono" required />
+            </div>
+
+            <div class="form-row">
+              <input type="number" name="personas" placeholder="Nº personas" min="1" max="30" class="personas" required />
+              <input type="submit" value="RESERVA" />
+            </div>
+            
+            <div class="form-row-2">
+              <a href="../index.html">Volver atrás</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="../scripts/reserves.js"></script>
+  </body>
+</html>

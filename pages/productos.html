@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <link rel="stylesheet" href="../styles/productos.css">
+    <script src="../scripts/productos.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="../assets/images/logoYonko.png" alt="Logo">
+        </div>
+        <div class="footer-links">
+            <a href="../index.html">Inicio</a>
+            <a href="./productos.html">Carta</a>
+            <a href="./reserves.html">Reservas</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="login-icon">
+            <a href="../pages/login.html"><i class="fa-solid fa-user" id="icon-user"></i></a>
+        </div>
+    </header>
+
+
+    <!-- <section class="productos-section">
+        <div class="selector-type">
+            <button class="tab-button active" data-tab="primeros">Primeros</button>
+            <button class="tab-button" data-tab="segundos">Segundos</button>
+            <button class="tab-button" data-tab="bebidas">Bebidas</button>
+        </div>
+    
+        <div class="productos-container">
+            <div class="producto">
+                <div class="imagen">
+                    <img src="../assets/images/comida1.png" alt="Producto 1">
+                </div>
+                <div class="info">
+                    <p class="precio">$12.99</p>
+                    <h4 class="titulo">Ensalada César</h4>
+                    <p class="descripcion">Lechuga fresca con aderezo césar, crutones y queso parmesano.</p>
+                </div>
+            </div>
+            <div class="producto">
+                <div class="imagen">
+                    <img src="../assets/images/comida1.png" alt="Producto 1">
+                </div>
+                <div class="info">
+                    <p class="precio">$15.99</p>
+                    <h4 class="titulo">Lasaña de Carne</h4>
+                    <p class="descripcion">Capas de pasta con salsa de tomate, carne y queso gratinado.</p>
+                </div>
+            </div>
+            <div class="producto">
+                <div class="imagen">
+                    <img src="../assets/images/comida1.png" alt="Producto 1">
+                </div>
+                <div class="info">
+                    <p class="precio">$8.99</p>
+                    <h4 class="titulo">Zumo Natural</h4>
+                    <p class="descripcion">Refrescante zumo de naranja recién exprimido.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <div class="wrapper">
+      
+        <div class="buttons-container">
+          <a href="#" class="button button--is-active" data-target="pizzaMenu">Pizzas</a>
+          <a href="#" class="button" data-target="coffeeMenu">Coffee</a>
+          <a href="#" class="button" data-target="noodlesMenu">Noodles</a>
+        </div>
+      
+        <!-- Start Pizza Menu -->
+        <div class="menu menu--is-visible" id="pizzaMenu">
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Greek Pizza</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$22</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Cheese Pizza</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$20</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Neapolitan Pizza</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$18</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Pepperoni Pizza</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$15</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+        </div> <!-- End Pizza Menu -->
+      
+        <!-- Start Coffee Menu -->
+        <div class="menu" id="coffeeMenu">
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Cappuccino</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$4</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Iced Coffee</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$5</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Café Latte</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$3</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Espresso</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$4</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+        </div> <!-- End Coffee Menu -->
+      
+        <!-- Start Noodles Menu -->
+        <div class="menu" id="noodlesMenu">
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Chicken Noodles</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$16</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Egg Noodles</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$12</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Veg Noodles</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$10</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+    
+          <div class="item">
+            <div class="item__header">
+              <h3 class="item__title">Chuck Norris Noodles</h3>
+              <span class="item__dots"></span>
+              <span class="item__price">$20</span>
+            </div>
+            <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum officia eaque nobis ut.</p>
+          </div>
+        </div> <!-- End Noodles Menu -->
+      
+      </div>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../assets/images/logoYonko.png" alt="Familia Yonko">
+            </div>
+            <div class="footer-links">
+                <a href="#">Inicio</a>
+                <a href="#">Carta</a>
+                <a href="#">Reservas</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Familia Yonko. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
