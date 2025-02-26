@@ -3,9 +3,6 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      let uri = "https://yonko-api.vercel.app/api/register";
-
-  
       // Recuperar los datos del formulario
       let name = $(".name-field").val();
       let username = $(".username-field").val();
@@ -31,14 +28,20 @@ $(document).ready(function () {
         $("#error-message").append(messagePasswordError);
         return;
       }
+
+      let newClient = {
+        name: name,
+        username: username,
+        password: password
+      }
   
       $.ajax({
         type: "POST",
-        url: uri,
+        url: "https://yonko-api.vercel.app/api/register",
         contentType: "application/json",
         dataType: "json",
         processData: false,
-        data: JSON.stringify({ name, username, password}),
+        data: JSON.stringify( newClient ),
         success: function (response) {
           if (response.success) {
             let messageAccess = `<div class="card">
@@ -55,7 +58,7 @@ $(document).ready(function () {
                   </div>`;
             $("#error-message").append(messageAccess);
             setTimeout(() => {
-              window.location.href = "../pages/login.html";
+              window.location.href = "https://yonko-eta.vercel.app/pages/login.html";
             }, 500);
             
           } else if (response.message === "This username is already in use") {
