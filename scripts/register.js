@@ -4,7 +4,7 @@ $(document).ready(function () {
       $("#error-message").empty();
   
       // Recuperar los datos del formulario
-      let name = $(".name-field").val();
+      let email = $(".email-field").val();
       let username = $(".username-field").val();
       let password = $(".password-field").val();
       let confirmPassword = $(".confirm-password-field").val();
@@ -30,7 +30,7 @@ $(document).ready(function () {
       }
 
       let newClient = {
-        name: name,
+        email: email,
         username: username,
         password: password
       }
@@ -77,7 +77,7 @@ $(document).ready(function () {
                   </div>`;
             $("#error-message").append(messageError);
           } else {
-            $(".name-field").val("");
+            $(".email-field").val("");
             $(".username-field").val("");
             $(".password-field").val("");
             $(".confirm-password-field").val("");
@@ -97,7 +97,7 @@ $(document).ready(function () {
           }
         },
         error: function (error) {
-          $(".name-field").val("");
+          $(".email-field").val("");
             $(".username-field").val("");
             $(".password-field").val("");
             $(".confirm-password-field").val("");
