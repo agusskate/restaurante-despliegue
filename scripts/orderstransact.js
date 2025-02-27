@@ -205,19 +205,126 @@ $(document).ready(function () {
         });
     }
     
-
-    
-
-    
-
-
-
-
-
-
-
     // Cargar los pedidos cuando la página se inicie
     $(document).ready(function () {
         loadOrders();
     }); 
+    
+
+    
+
+    //RESERVAS
+    function loadReservations() {
+        $.ajax({
+            type: "GET",
+            url: "https://yonko-api.vercel.app/api/reservations",
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
+    
+                    response.reservations.forEach(reservation => {
+                        let reservationHTML = `
+                            <div class="reservation-card">
+                                <div class="reservation-id">
+                                    <span class="label">ID de la Reserva:</span>
+                                    <span class="value reservation-id">${reservation._id}</span>
+                                </div>
+                                <div class="reservation-owner">
+                                    <span class="label">Propietario:</span>
+                                    <span class="value">${reservation.owner}</span>
+                                </div>
+                                <div class="reservation-date">
+                                    <span class="label">Fecha:</span>
+                                    <span class="value">${reservation.date}</span>
+                                </div>
+                                <div class="reservation-time">
+                                    <span class="label">Hora:</span>
+                                    <span class="value">${reservation.time}</span>
+                                </div>
+                                <div class="reservation-people">
+                                    <span class="label">Personas:</span>
+                                    <span class="value">${reservation.people}</span>
+                                </div>
+                                <div class="reservation-actions">
+                                    <button class="accept-btn">Aceptar</button>
+                                    <button class="decline-btn">Declinar</button>
+                                </div>
+                            </div>
+                        `;
+                        $(".reservations-list").append(reservationHTML);
+                    });
+    
+                    // Asignar eventos a los botones de aceptar y rechazar
+                    $(".accept-btn").click(function () {
+                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
+                        acceptReservation(reservationId);
+                    });
+    
+                    $(".decline-btn").click(function () {
+                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
+                        declineReservation(reservationId);
+                    });
+                } else {
+                    alert("❌ No se pudieron cargar las reservas.");
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
+    
+    // Aceptar reserva
+    function acceptReservation(reservationId) {
+        $.ajax({
+            type: "POST",
+            url: "https://yonko-api.vercel.app/api/reservation/accept",
+            contentType: "application/json",
+            data: JSON.stringify({ reservation_id: reservationId }),
+            success: function (response) {
+                if (response.success) {
+                    alert("✅ Reserva aceptada.");
+                    loadReservations(); // Refrescar lista de reservas
+                } else {
+                    alert("❌ Error al aceptar la reserva: " + response.message);
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
+    
+    // Rechazar reserva
+    function declineReservation(reservationId) {
+        $.ajax({
+            type: "POST",
+            url: "https://yonko-api.vercel.app/api/reservation/decline",
+            contentType: "application/json",
+            data: JSON.stringify({ reservation_id: reservationId }),
+            success: function (response) {
+                if (response.success) {
+                    alert("❌ Reserva rechazada.");
+                    loadReservations(); // Refrescar lista de reservas
+                } else {
+                    alert("❌ Error al rechazar la reserva: " + response.message);
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
+    
+    // Cargar las reservas al iniciar la página
+    $(document).ready(function () {
+        loadReservations();
+    });
+
+
+
 });

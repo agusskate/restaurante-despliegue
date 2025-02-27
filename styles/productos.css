@@ -148,6 +148,8 @@ body {
 }
 
 .checkout-btn {
+    font-family: 'Japan', sans-serif;
+
     padding: 10px 20px;
     background-color: #FFD700;
     border: none;
@@ -159,7 +161,7 @@ body {
 }
 
 .checkout-btn:hover {
-    background-color: #ffac33; /* Cambia el color al pasar el ratón */
+    background-color: #fdab31; /* Cambia el color al pasar el ratón */
 }
 
 
