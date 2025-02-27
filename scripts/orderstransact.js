@@ -205,10 +205,6 @@ $(document).ready(function () {
         });
     }
     
-    // Cargar los pedidos cuando la página se inicie
-    $(document).ready(function () {
-        loadOrders();
-    }); 
     
 
     
@@ -318,11 +314,7 @@ $(document).ready(function () {
         });
     }
     
-    // Cargar las reservas al iniciar la página
-    $(document).ready(function () {
-        loadReservations();
-    });
-
-
-
+    // Cargar las reservas y pedidos al iniciar la página
+    loadReservations();
+    loadOrders();
 });
