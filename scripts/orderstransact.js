@@ -131,12 +131,12 @@ $(document).ready(function () {
 
                       // Asignar eventos a los botones de aceptar y rechazar
                       $(".accept-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").data("username");
+                        let orderId = $(this).closest(".reservation-card").data("order-id");
                         acceptOrder(orderId);
                     });
 
                     $(".decline-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").data("username");
+                        let orderId = $(this).closest(".reservation-card").data("order-id");
                         declineOrder(orderId);
                     });
 
