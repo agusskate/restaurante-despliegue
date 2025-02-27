@@ -281,13 +281,13 @@ $(document).ready(function () {
             type: "POST",
             url: "https://yonko-api.vercel.app/api/reservation/accept",
             contentType: "application/json",
-            data: JSON.stringify({ reservation_id: reservationId }),
+            data: JSON.stringify({ reservationId: reservationId }),
             success: function (response) {
                 if (response.success) {
-                    alert("✅ Reserva aceptada.");
-                    loadReservations(); // Refrescar lista de reservas
+                    alert("✅ Reserva aceptado. Se ha enviado un correo al cliente.");
+                    loadReservations();; // Refrescar lista
                 } else {
-                    alert("❌ Error al aceptar la reserva: " + response.message);
+                    alert("❌ Error al aceptar pedido: " + response.message);
                 }
             },
             error: function (error) {
@@ -296,19 +296,19 @@ $(document).ready(function () {
             }
         });
     }
-    
+
     function declineReservation(reservationId) {
         $.ajax({
             type: "POST",
-            url: "https://yonko-api.vercel.app/api/reservation/decline",
+            url: "https://yonko-api.vercel.app/api/order/decline",
             contentType: "application/json",
-            data: JSON.stringify({ reservation_id: reservationId }),
+            data: JSON.stringify({ reservationId: reservationId }),
             success: function (response) {
                 if (response.success) {
-                    alert("❌ Reserva rechazada.");
-                    loadReservations(); // Refrescar lista de reservas
+                    alert("❌ Reserva rechazada y eliminada.");
+                    loadReservations();                    //Refrescar lista
                 } else {
-                    alert("❌ Error al rechazar la reserva: " + response.message);
+                    alert("❌ Error al eliminar: " + response.message);
                 }
             },
             error: function (error) {
