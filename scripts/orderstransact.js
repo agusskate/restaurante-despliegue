@@ -105,7 +105,11 @@ $(document).ready(function () {
                         let productsHTML = order.products.map(p => `<li>${p.name} - ${p.price} €</li>`).join("");
     
                         let orderHTML = `
-                            <div class="reservation-card" data-order-id="${order._id}>
+                            <div class="reservation-card">
+                            <div class="reservation-id">
+                                <span class="label">ID del Pedido:</span>
+                                <span class="value order-id">${order._id}</span>
+                            </div>
                                 <div class="reservation-name">
                                     <span class="label">Cliente:</span>
                                     <span class="value">${order.username}</span>
@@ -131,12 +135,12 @@ $(document).ready(function () {
 
                       // Asignar eventos a los botones de aceptar y rechazar
                       $(".accept-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").data("order-id");
+                        let orderId = $(this).closest(".reservation-card").find(".order-id").text();
                         acceptOrder(orderId);
                     });
 
                     $(".decline-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").data("order-id");
+                        let orderId = $(this).closest(".reservation-card").find(".order-id").text();
                         declineOrder(orderId);
                     });
 
