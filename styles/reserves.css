@@ -12,6 +12,7 @@
 
 body {
     font-family: 'Japan', sans-serif !important;
+    background-color: black;
 }
 
 h2{
@@ -19,8 +20,8 @@ h2{
 }
 .reserves {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../assets/images/1background-reserves.png") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+    url("../assets/images/panel-reserves-3.png") center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +41,8 @@ h2{
 }
 
 .card-img {
-    background: url("../assets/images/food-shushi.jpg") center/cover no-repeat;
+    background: url("../assets/images/panel-reserves-4.png") center/cover no-repeat;
+    height: auto;
 }
 
 .reserves h2 {
@@ -92,6 +94,9 @@ input {
     border: 1px solid rgb(255, 255, 255);
     padding: 10px;
     border-radius: 5px;
+    transition: all 0.3s ease;
+    font-family: 'Japan', sans-serif !important;
+
 }
 
 input[type="date"],
