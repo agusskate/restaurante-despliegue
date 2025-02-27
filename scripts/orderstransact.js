@@ -120,10 +120,6 @@ $(document).ready(function () {
                                         ${productsHTML}
                                     </ul>
                                 </div>
-                                <div class="reservation-status">
-                                    <span class="label">Estado:</span>
-                                    <span class="value">${order.status}</span>
-                                </div>
                                 <div class="reservation-actions">
                                     <button class="accept-btn">Aceptar</button>
                                     <button class="decline-btn">Declinar</button>
