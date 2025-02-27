@@ -96,6 +96,8 @@ $(document).ready(function () {
             url: "https://yonko-api.vercel.app/api/orders",
             dataType: "json",
             success: function (response) {
+                console.log(response);
+                
                 if (response.success) {
                     $(".orders-list").empty(); // Limpiar la lista antes de agregar nuevos pedidos
                     
