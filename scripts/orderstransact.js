@@ -276,9 +276,7 @@ $(document).ready(function () {
         });
     }
     
-    // Aceptar reserva
     function acceptReservation(reservationId) {
-        console.log("Aceptando reserva con ID:", reservationId);  // Verifica el ID que se está enviando
         $.ajax({
             type: "POST",
             url: "https://yonko-api.vercel.app/api/reservation/accept",
@@ -299,8 +297,6 @@ $(document).ready(function () {
         });
     }
     
-    
-    // Rechazar reserva
     function declineReservation(reservationId) {
         $.ajax({
             type: "POST",
