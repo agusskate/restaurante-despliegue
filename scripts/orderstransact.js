@@ -105,7 +105,7 @@ $(document).ready(function () {
                         let productsHTML = order.products.map(p => `<li>${p.name} - ${p.price} €</li>`).join("");
     
                         let orderHTML = `
-                            <div class="reservation-card">
+                            <div class="reservation-card" data-order-id="${order._id}>
                                 <div class="reservation-name">
                                     <span class="label">Cliente:</span>
                                     <span class="value">${order.username}</span>
@@ -131,16 +131,16 @@ $(document).ready(function () {
 
                       // Asignar eventos a los botones de aceptar y rechazar
                       $(".accept-btn").click(function () {
-                        let username = $(this).closest(".reservation-card").data("username");
-                        acceptOrder(username);
+                        let orderId = $(this).closest(".reservation-card").data("username");
+                        acceptOrder(orderId);
                     });
 
                     $(".decline-btn").click(function () {
-                        let username = $(this).closest(".reservation-card").data("username");
-                        declineOrder(username);
+                        let orderId = $(this).closest(".reservation-card").data("username");
+                        declineOrder(orderId);
                     });
 
-                    
+
                 } else {
                     alert("❌ No se pudieron cargar los pedidos.");
                 }
@@ -158,12 +158,12 @@ $(document).ready(function () {
 
 
 
-    function acceptOrder(username) {
+    function acceptOrder(orderId) {
         $.ajax({
             type: "POST",
             url: "https://yonko-api.vercel.app/api/order/accept",
             contentType: "application/json",
-            data: JSON.stringify({ username: username }),
+            data: JSON.stringify({ order_id: orderId }),
             success: function (response) {
                 if (response.success) {
                     alert("✅ Pedido aceptado. Se ha enviado un correo al cliente.");
@@ -178,6 +178,30 @@ $(document).ready(function () {
             }
         });
     }
+
+    function declineOrder(orderId) {
+        $.ajax({
+            type: "POST",
+            url: "https://yonko-api.vercel.app/api/order/decline",
+            contentType: "application/json",
+            data: JSON.stringify({ order_id: orderId }),
+            success: function (response) {
+                if (response.success) {
+                    alert("❌ Pedido rechazado y eliminado.");
+                    loadOrders(); // Refrescar lista
+                } else {
+                    alert("❌ Error al eliminar el pedido: " + response.message);
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
+    
+
+    
 
     
 
