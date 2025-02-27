@@ -1,4 +1,4 @@
-
+$(document).ready(function () {
     let total = 0;
 
     $(".item__button").click(function () {
@@ -150,4 +150,4 @@
     
     
     
-
+});
