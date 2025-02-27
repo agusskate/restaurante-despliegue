@@ -10,7 +10,10 @@
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
     <link rel="stylesheet" href="../styles/productos.css">
     <script src="../scripts/productos.js" defer></script>
+    <script src="../scripts/orderstransact.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <header class="header">
@@ -21,12 +24,39 @@
             <a href="../index.html">Inicio</a>
             <a href="./productos.html">Carta</a>
             <a href="./reserves.html">Reservas</a>
-            <a href="#">Contacto</a>
         </div>
         <div class="login-icon">
+            <div class="cesta-icon"><img width="25px" src="../assets/images/icons8-cesta-de-la-compra-30.png" alt=""></div>
             <a href="../pages/login.html"><img src="../assets/images/icons8-user-24.png" alt=""></a>
+
         </div>
+        
     </header>
+
+
+    <div class="popup-overlay">
+      <div class="popup-content">
+          <div class="popup-header">
+              <h3>Cesta de la compra</h3>
+              <button class="popup-close-btn">&times;</button>
+          </div>
+          <div class="popup-body">
+              <!-- Aquí se agregarán los productos -->
+              <div id="cart-items-list">
+                  <!-- Los productos irán aquí -->
+              </div>
+          </div>
+          <div class="popup-footer">
+              <div class="total-price">
+                  <span>Total: </span><span id="total-price">0.00 €</span>
+              </div>
+              <button class="checkout-btn">Pagar</button>
+          </div>
+      </div>
+  </div>
+  
+
+
 
 
     <!-- <section class="productos-section">
@@ -285,7 +315,6 @@
                 <a href="#">Inicio</a>
                 <a href="#">Carta</a>
                 <a href="#">Reservas</a>
-                <a href="#">Contacto</a>
             </div>
             <div class="footer-social">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
