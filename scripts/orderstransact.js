@@ -31,6 +31,8 @@ $(document).ready(function () {
 
     let session = localStorage.getItem("session") || "Anónimo";
 
+
+    //tramitar pedido
     $(".checkout-btn").click(function () {
         let cartItems = [];
         let total = 0;
@@ -63,7 +65,7 @@ $(document).ready(function () {
         // Enviar pedido a la API
         $.ajax({
             type: "POST",
-            url: "https://yonko-api.vercel.app/api/orders",
+            url: "https://yonko-api.vercel.app/api/order",
             contentType: "application/json",
             dataType: "json",
             processData: false,
