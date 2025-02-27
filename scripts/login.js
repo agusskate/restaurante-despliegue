@@ -43,7 +43,7 @@ $(document).ready(function () {
                 window.location.href = "https://yonko-eta.vercel.app/";
               }, 500);
             }
-            
+          
           } else if (response.message === "Incorrect password") {
             $(".password-field").val("");    
             let messageError = `<div class="card">
