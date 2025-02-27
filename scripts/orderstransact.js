@@ -247,8 +247,8 @@ $(document).ready(function () {
                                     <span class="value">${reservation.people}</span>
                                 </div>
                                 <div class="reservation-actions">
-                                    <button class="" id ="id-accept">Aceptar</button>
-                                    <button class="" id ="id-decline">Declinar</button>
+                                    <button class="id-accept" id ="">Aceptar</button>
+                                    <button class="id-decline" id ="">Declinar</button>
                                 </div>
                             </div>
                         `;
@@ -256,12 +256,12 @@ $(document).ready(function () {
                     });
     
                     // Asignar eventos a los botones de aceptar y rechazar
-                    $("#id-accept").click(function () {
+                    $(".id-accept").click(function () {
                         let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
                         acceptReservation(reservationId);
                     });
     
-                    $("#id-decline").click(function () {
+                    $(".id-decline").click(function () {
                         let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
                         declineReservation(reservationId);
                     });
