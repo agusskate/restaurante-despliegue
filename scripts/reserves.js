@@ -41,16 +41,26 @@ $(document).ready(function () {
 
         // Vaidaciones de tlfn y fecha
         if (!tlfnValid(clientReserves.tlfn)) {
-            alert("Número de teléfono inválido. Debe contener 9 dígitos.");
+          $(".info-error").text("Número de teléfono inválido. Debe contener 9 dígitos.");
+          $(".message-fallido").show();
+
+          setTimeout(() => {
+            $(".message-fallido").hide();
             $(".telefono").val("");
             return;
+          }, 500);
         }
 
         if (!dataValid(clientReserves.date, clientReserves.time)) {
-            alert("La reserva debe hacerse con al menos 30 minutos de anticipación. No se puede reservar en dias ya pasados");
+          $(".info-error").text("La reserva debe hacerse con al menos 30 minutos de anticipación.");
+          $(".message-fallido").show();
+
+          setTimeout(() => {
+            $(".message-fallido").hide();
             $(".fecha").val("");
             $(".horario").val("");
             return;
+          }, 500);
         }
 
         console.log(clientReserves);
@@ -64,18 +74,31 @@ $(document).ready(function () {
             data: JSON.stringify( clientReserves ),
             success: function (response) {
               if (response.success) {
+                $(".message-exito").show();
                 setTimeout(() => {
+                  $(".message-exito").hide();
                   window.location.href = "https://yonko-eta.vercel.app/";
                 }, 500);
               } else {
                 console.log(response.message);
-                
+                $(".info-error").text(response.message);
+                $(".message-fallido").show();
+                setTimeout(() => {
+                  $(".message-exito").hide();
+                  window.location.href = "https://yonko-eta.vercel.app/pages/reserves.html";
+                }, 500);
               }
             },
             error: function (error) {
               console.log("Error al conectarse a la base de datos.");
-              
+              $(".info-error").text("Error al conectarse a la base de datos.");
+              $(".message-fallido").show();
+              setTimeout(() => {
+                $(".message-exito").hide();
+                window.location.href = "https://yonko-eta.vercel.app/pages/reserves.html";
+              }, 500);
             },
           });
     });
 });
+

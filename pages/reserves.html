@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
     <link rel="stylesheet" href="../styles/reserves.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   </head>
   <body>
     <section class="reserves">
@@ -37,6 +42,20 @@
         </div>
       </div>
     </section>
+
+    <div class="message-exito">
+      <div class="exito">
+        <h1><i class="fa-solid fa-thumbs-up"></i> RESERVA ÉXITOSA</h1>
+      </div>
+    </div>
+
+    <div class="message-fallido">
+      <div class="fallido">
+        <h1><i class="fa-solid fa-thumbs-down"></i> NO SE PUDO RESERVAR</h1>
+        <h3><span class="info-error"></span></h3>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="../scripts/reserves.js"></script>
   </body>
