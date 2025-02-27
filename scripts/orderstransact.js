@@ -128,6 +128,19 @@ $(document).ready(function () {
                         `;
                         $(".orders-list").append(orderHTML);
                     });
+
+                      // Asignar eventos a los botones de aceptar y rechazar
+                      $(".accept-btn").click(function () {
+                        let username = $(this).closest(".reservation-card").data("username");
+                        acceptOrder(username);
+                    });
+
+                    $(".decline-btn").click(function () {
+                        let username = $(this).closest(".reservation-card").data("username");
+                        declineOrder(username);
+                    });
+
+                    
                 } else {
                     alert("❌ No se pudieron cargar los pedidos.");
                 }
@@ -139,11 +152,43 @@ $(document).ready(function () {
         });
     }
     
+
+
+
+
+
+
+    function acceptOrder(username) {
+        $.ajax({
+            type: "POST",
+            url: "https://yonko-api.vercel.app/api/order/accept",
+            contentType: "application/json",
+            data: JSON.stringify({ username: username }),
+            success: function (response) {
+                if (response.success) {
+                    alert("✅ Pedido aceptado. Se ha enviado un correo al cliente.");
+                    loadOrders(); // Refrescar lista
+                } else {
+                    alert("❌ Error al aceptar el pedido: " + response.message);
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    
+
+
+
+
+
+
+
     // Cargar los pedidos cuando la página se inicie
     $(document).ready(function () {
         loadOrders();
-    });
-    
-    
-    
+    }); 
 });
