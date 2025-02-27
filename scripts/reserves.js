@@ -48,7 +48,7 @@ $(document).ready(function () {
             $(".message-fallido").hide();
             $(".telefono").val("");
             return;
-          }, 500);
+          }, 5000);
         }
 
         if (!dataValid(clientReserves.date, clientReserves.time)) {
@@ -60,7 +60,7 @@ $(document).ready(function () {
             $(".fecha").val("");
             $(".horario").val("");
             return;
-          }, 500);
+          }, 5000);
         }
 
         console.log(clientReserves);
@@ -78,7 +78,7 @@ $(document).ready(function () {
                 setTimeout(() => {
                   $(".message-exito").hide();
                   window.location.href = "https://yonko-eta.vercel.app/";
-                }, 500);
+                }, 2500);
               } else {
                 console.log(response.message);
                 $(".info-error").text(response.message);
@@ -86,7 +86,7 @@ $(document).ready(function () {
                 setTimeout(() => {
                   $(".message-exito").hide();
                   window.location.href = "https://yonko-eta.vercel.app/pages/reserves.html";
-                }, 500);
+                }, 5000);
               }
             },
             error: function (error) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
               setTimeout(() => {
                 $(".message-exito").hide();
                 window.location.href = "https://yonko-eta.vercel.app/pages/reserves.html";
-              }, 500);
+              }, 5000);
             },
           });
     });
