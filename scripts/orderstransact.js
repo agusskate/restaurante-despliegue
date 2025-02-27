@@ -247,8 +247,8 @@ $(document).ready(function () {
                                     <span class="value">${reservation.people}</span>
                                 </div>
                                 <div class="reservation-actions">
-                                    <button class="accept-btn" id ="id-accept">Aceptar</button>
-                                    <button class="decline-btn" id ="id-decline">Declinar</button>
+                                    <button class="" id ="id-accept">Aceptar</button>
+                                    <button class="" id ="id-decline">Declinar</button>
                                 </div>
                             </div>
                         `;
