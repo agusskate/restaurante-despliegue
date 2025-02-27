@@ -77,6 +77,7 @@ $(document).ready(function () {
                     // Limpiar carrito
                     localStorage.removeItem("cartData");
                     $("#cart-items-list").empty();
+                    $("#total-price").html("00.00");
                     loadOrders(); // Actualizar lista de pedidos
                 } else {
                     alert("❌ Error en la compra: " + response.message);
