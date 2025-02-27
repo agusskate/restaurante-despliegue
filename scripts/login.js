@@ -19,6 +19,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.success) {
             localStorage.setItem("session", response.session);
+            let session = localStorage.getItem("session") || "Anónimo";
             let messageAccess = `<div class="card">
                       <div class="icon-container-access">
                         <i class="bx bx-check-circle icon-access"></i>
@@ -32,9 +33,16 @@ $(document).ready(function () {
                       <i class="bx bx-x cross-icon"></i>
                   </div>`;
             $("#error-message").append(messageAccess);
-            setTimeout(() => {
-              window.location.href = "https://yonko-eta.vercel.app/";
-            }, 500);
+
+            if (session === "admin") {
+              setTimeout(() => {
+                window.location.href = "https://yonko-eta.vercel.app/pages/user.html";
+              }, 500);
+            } else {
+              setTimeout(() => {
+                window.location.href = "https://yonko-eta.vercel.app/";
+              }, 500);
+            }
           
           } else if (response.message === "Incorrect password") {
             $(".password-field").val("");    
