@@ -28,6 +28,15 @@ $(document).ready(function () {
         $(".popup-overlay").fadeOut();
     });
 
+    //pop up notificaciones
+    $(".popup-overlay-noti").hide();
+    $(".notification-icon").click(function () {
+        $(".popup-overlay-noti").fadeIn();
+    });
+
+    $(".popup-close-btn").click(function () {
+        $(".popup-overlay-noti").fadeOut();
+    });
 
     let session = localStorage.getItem("session") || "Anónimo";
 
@@ -90,7 +99,7 @@ $(document).ready(function () {
         });
     });
 
-    
+    //ORDERS
     function loadOrders() {
         $.ajax({
             type: "GET",
@@ -158,11 +167,6 @@ $(document).ready(function () {
     }
     
 
-
-
-
-
-
     function acceptOrder(orderId) {
         $.ajax({
             type: "POST",
@@ -206,9 +210,6 @@ $(document).ready(function () {
     }
     
     
-
-    
-
     //RESERVAS
     function loadReservations() {
         $.ajax({
@@ -315,7 +316,67 @@ $(document).ready(function () {
         });
     }
     
+
+    //CARGAR NOTIFICACIONES
+    function loadNotifications() {
+        let session = localStorage.getItem("session") || "Anónimo";
+    
+        $("#notifications-items-list").empty(); // Limpiar lista antes de agregar
+    
+        $.ajax({
+            type: "GET",
+            url: "https://yonko-api.vercel.app/api/reservations",
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    response.reservations.forEach(reservation => {
+                        if (reservation.owner === session) {
+                            let reservationHTML = `
+                                <div class="notification-item">
+                                    <span class="label">Reserva:</span>
+                                    <span class="value">${reservation.date} a las ${reservation.time}</span>
+                                    <span class="status">Estado: ${reservation.status}</span>
+                                </div>
+                            `;
+                            $("#notifications-items-list").append(reservationHTML);
+                        }
+                    });
+                }
+            },
+            error: function (error) {
+                console.error("Error al cargar reservas:", error);
+            }
+        });
+    
+        $.ajax({
+            type: "GET",
+            url: "https://yonko-api.vercel.app/api/orders",
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    response.orders.forEach(order => {
+                        if (order.username === session) {
+                            let orderHTML = `
+                                <div class="notification-item">
+                                    <span class="label">Pedido:</span>
+                                    <span class="value">Total: ${order.total} €</span>
+                                    <span class="status">Estado: ${order.status}</span>
+                                </div>
+                            `;
+                            $("#notifications-items-list").append(orderHTML);
+                        }
+                    });
+                }
+            },
+            error: function (error) {
+                console.error("Error al cargar pedidos:", error);
+            }
+        });
+    }
+    
+
     // Cargar las reservas y pedidos al iniciar la página
+    loadNotifications()
     loadReservations();
     loadOrders();
 });
