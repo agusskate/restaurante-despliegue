@@ -191,26 +191,86 @@ $(document).ready(function () {
         });
     }
 
-    function declineOrder(orderId) {
-        $.ajax({
-            type: "POST",
-            url: "https://yonko-api.vercel.app/api/order/decline",
-            contentType: "application/json",
-            data: JSON.stringify({ order_id: orderId }),
-            success: function (response) {
-                if (response.success) {
-                    alert("❌ Pedido rechazado y eliminado.");
-                    loadOrders(); // Refrescar lista
-                } else {
-                    alert("❌ Error al eliminar el pedido: " + response.message);
+// Cargar Reservas
+function loadReservations() {
+    $.ajax({
+        type: "GET",
+        url: "https://yonko-api.vercel.app/api/reservations",
+        dataType: "json",
+        success: function (response) {
+            if (response.success) {
+                $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
+                
+                let hasPending = false; // Para verificar si hay reservas pendientes
+
+                response.reservations.forEach(reservation => {
+                    // Solo imprimir si transact es FALSE
+                    if (reservation.transact === false) {
+                        hasPending = true;
+
+                        let reservationHTML = `
+                            <div class="reservation-card">
+                                <div class="reservation-id" data-id="${reservation._id}">
+                                    <span class="label">ID de la Reserva:</span>
+                                    <span class="reservation-id-class">${reservation._id}</span>
+                                </div>
+                                <div class="reservation-owner">
+                                    <span class="label">Propietario:</span>
+                                    <span class="value">${reservation.owner}</span>
+                                </div>
+                                <div class="reservation-date">
+                                    <span class="label">Fecha:</span>
+                                    <span class="value">${reservation.date}</span>
+                                </div>
+                                <div class="reservation-time">
+                                    <span class="label">Hora:</span>
+                                    <span class="value">${reservation.time}</span>
+                                </div>
+                                <div class="reservation-people">
+                                    <span class="label">Personas:</span>
+                                    <span class="value">${reservation.people}</span>
+                                </div>
+                                <div class="reservation-actions">
+                                    <button class="id-accept">Aceptar</button>
+                                    <button class="id-decline">Declinar</button>
+                                </div>
+                            </div>
+                        `;
+                        $(".reservations-list").append(reservationHTML);
+                    }
+                });
+
+                // Si no hay reservas con transact: false
+                if (!hasPending) {
+                    $(".reservations-list").append(`
+                        <div class="no-reservations">
+                            <p>✅ No hay reservas pendientes.</p>
+                        </div>
+                    `);
                 }
-            },
-            error: function (error) {
-                alert("⚠️ Error al conectar con el servidor.");
-                console.error("Error:", error);
+
+                // Asignar eventos a los botones de aceptar y rechazar
+                $(".id-accept").click(function () {
+                    let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
+                    acceptReservation(reservationId);
+                });
+
+                $(".id-decline").click(function () {
+                    let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
+                    declineReservation(reservationId);
+                });
+
+            } else {
+                alert("❌ No se pudieron cargar las reservas.");
             }
-        });
-    }
+        },
+        error: function (error) {
+            alert("⚠️ Error al conectar con el servidor.");
+            console.error("Error:", error);
+        }
+    });
+}
+
     
     
     //RESERVAS
