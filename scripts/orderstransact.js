@@ -335,7 +335,9 @@ $(document).ready(function () {
                                 <div class="notification-item">
                                     <span class="label">Reserva:</span>
                                     <span class="value">${reservation.date} a las ${reservation.time}</span>
-                                    <span class="status">Estado: ${reservation.status}</span>
+                                                                        
+                                    <span class="label">Estado:</span>
+                                    <span class="status">${reservation.status}</span>
                                 </div>
                             `;
                             $("#notifications-items-list").append(reservationHTML);
@@ -359,8 +361,9 @@ $(document).ready(function () {
                             let orderHTML = `
                                 <div class="notification-item">
                                     <span class="label">Pedido:</span>
-                                    <span class="value">Total: ${order.total} €</span>
-                                    <span class="status">Estado: ${order.status}</span>
+                                    <span class="value">${order.total} €</span>
+                                    <span class="label">Estado:</span>
+                                    <span class="status">${order.status}</span>
                                 </div>
                             `;
                             $("#notifications-items-list").append(orderHTML);
