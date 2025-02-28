@@ -321,7 +321,7 @@ $(document).ready(function () {
     function loadNotifications() {
         let session = localStorage.getItem("session") || "Anónimo";
     
-        $("#notifications-items-list").empty(); // Limpiar lista antes de agregar
+        $("#notifications-items-list").empty(); // Limpiamos lista
     
         $.ajax({
             type: "GET",

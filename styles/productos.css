@@ -63,7 +63,7 @@ body {
 
 }
 
-/* POP UP notificaciones */
+/* POP UP para notificaciones */
 .popup-overlay-noti {
     display: flex;
     position: fixed;

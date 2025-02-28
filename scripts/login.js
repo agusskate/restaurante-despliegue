@@ -3,7 +3,7 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      // Recuperar los datos del formulario
+      // Recuperar los datos
       let dataClient = {
         username: $(".username-field").val(),
         password: $(".password-field").val()
