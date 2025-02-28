@@ -296,7 +296,7 @@ $(document).ready(function () {
     function declineReservation(reservationId) {
         $.ajax({
             type: "POST",
-            url: "https://yonko-api.vercel.app/api/order/decline",
+            url: "https://yonko-api.vercel.app/api/reservation/decline",
             contentType: "application/json",
             data: JSON.stringify({ reservationId: reservationId }),
             success: function (response) {
