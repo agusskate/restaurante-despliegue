@@ -277,7 +277,7 @@ $(document).ready(function () {
             type: "POST",
             url: "https://yonko-api.vercel.app/api/reservation/accept",
             contentType: "application/json",
-            data: JSON.stringify({ reservationId: reservationId }),
+            data: JSON.stringify({ reservation_id: reservationId }),
             success: function (response) {
                 if (response.success) {
                     alert("✅ Reserva aceptado. Se ha enviado un correo al cliente.");
@@ -298,7 +298,7 @@ $(document).ready(function () {
             type: "POST",
             url: "https://yonko-api.vercel.app/api/reservation/decline",
             contentType: "application/json",
-            data: JSON.stringify({ reservationId: reservationId }),
+            data: JSON.stringify({ reservation_id: reservationId }),
             success: function (response) {
                 if (response.success) {
                     alert("❌ Reserva rechazada y eliminada.");
