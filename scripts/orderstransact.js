@@ -222,7 +222,7 @@ $(document).ready(function () {
                     response.reservations.forEach(reservation => {
                         let reservationHTML = `
                             <div class="reservation-card">
-                                <div class="reservation-id">
+                                <div class="reservation-id" data-id="${reservation._id}">
                                     <span class="label">ID de la Reserva:</span>
                                     <span class="reservation-id">${reservation._id}</span>
                                 </div>
@@ -253,12 +253,12 @@ $(document).ready(function () {
     
                     // Asignar eventos a los botones de aceptar y rechazar
                     $(".id-accept").click(function () {
-                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text().trim();
+                        let reservationId = $(this).closest(".reservation-card").data("id");
                         acceptReservation(reservationId);
                     });
                     
                     $(".id-decline").click(function () {
-                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text().trim();
+                        let reservationId = $(this).closest(".reservation-card").data("id");
                         declineReservation(reservationId);
                     });
 
