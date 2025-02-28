@@ -28,7 +28,7 @@ function handleClick(e) {
   buttons.forEach(button => button.classList.remove('button--is-active'));
   this.classList.add('button--is-active');
 
-  // Set current dimensions and position of 'highlight' based on the clicked button
+
   const buttonCoords = this.getBoundingClientRect();
   const coords = {
     width: buttonCoords.width,
@@ -41,7 +41,7 @@ function handleClick(e) {
   highlight.style.height = `${coords.height}px`;
   highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
 
-  // Show the menu associated with the clicked button
+
   const targetMenu = document.querySelector(`#${this.dataset.target}`);
   menus.forEach(menu => {
     menu.classList.remove('menu--is-visible');

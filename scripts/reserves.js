@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    // Obtnemos la fecha actual
+
     let today = new Date().toISOString().split("T")[0];
-    // Ponemos la fecha de hoy como la minima del input
+
     $(".fecha").attr("min", today);
 
     // Recuperamos el nombre de usuario de la sesión
@@ -26,20 +26,17 @@ $(document).ready(function () {
         /* Funcion para verificar que la reserva tiene una
         hora y fecha válida y no pasada */
         let dataValid = (date, time) => {
-            // Fecha seleccionadoa por el usuario
+
             let selectDate = new Date(date + " " + time);
-            // Fecha actual
             let actualDate = new Date();
 
-            /* Añadimos 30min a la fecha actual porque 
-            como minimo se dede resevar con media hora de antelación */
             actualDate.setMinutes(actualDate.getMinutes() + 30);
 
             // Verificamos que la reserva se pueda realizar
             return selectDate >= actualDate;
         }
 
-        // Vaidaciones de tlfn y fecha
+
         if (!tlfnValid(clientReserves.tlfn)) {
           $(".info-error").text("Número de teléfono inválido. Debe contener 9 dígitos.");
           $(".message-fallido").show();

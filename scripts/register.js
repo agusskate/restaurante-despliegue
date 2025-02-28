@@ -3,13 +3,11 @@ $(document).ready(function () {
       e.preventDefault();
       $("#error-message").empty();
   
-      // Recuperar los datos del formulario
       let email = $(".email-field").val();
       let username = $(".username-field").val();
       let password = $(".password-field").val();
       let confirmPassword = $(".confirm-password-field").val();
   
-      // Validar que las contraseñas coincidan
       if (password !== confirmPassword) {
         $(".password-field").val("");
         $(".confirm-password-field").val("");
