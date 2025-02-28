@@ -183,20 +183,17 @@ $(document).ready(function () {
     
 
     function acceptOrder(orderId) {
-        console.log("hh:", orderId);
         $.ajax({
             type: "POST",
-            url: "https://yonko-api.vercel.app/api/order/accept",
+            url: "https://yonko-api.vercel.app/api/order/decline",
             contentType: "application/json",
-
-            
             data: JSON.stringify({ order_id: orderId }),
             success: function (response) {
                 if (response.success) {
-                    alert("✅ Pedido aceptado. Se ha enviado un correo al cliente.");
-                    loadOrders(); // Refrescar lista
+                    alert("✅ Order aceptada.");
+                    loadOrders();                    //Refrescar lista
                 } else {
-                    alert("❌ Error al aceptar el pedido: " + response.message);
+                    alert("❌ Error: " + response.message);
                 }
             },
             error: function (error) {
