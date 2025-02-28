@@ -191,7 +191,7 @@ $(document).ready(function () {
         });
     }
 
-// Cargar Reservas
+//Cargar Reservas
 function loadReservations() {
     $.ajax({
         type: "GET",
@@ -201,7 +201,7 @@ function loadReservations() {
             if (response.success) {
                 $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
                 
-                let hasPending = false; // Para verificar si hay reservas pendientes
+                let hasPending = false; // Paraverificar si hay reservas pendientes
 
                 response.reservations.forEach(reservation => {
                     // Solo imprimir si transact es FALSE
@@ -272,70 +272,69 @@ function loadReservations() {
 }
 
     
-    
     //RESERVAS
-    function loadReservations() {
-        $.ajax({
-            type: "GET",
-            url: "https://yonko-api.vercel.app/api/reservations",
-            dataType: "json",
-            success: function (response) {
-                if (response.success) {
-                    $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
+    // function loadReservations() {
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "https://yonko-api.vercel.app/api/reservations",
+    //         dataType: "json",
+    //         success: function (response) {
+    //             if (response.success) {
+    //                 $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
     
-                    response.reservations.forEach(reservation => {
-                        let reservationHTML = `
-                            <div class="reservation-card">
-                                <div class="reservation-id" data-id="${reservation._id}">
-                                    <span class="label">ID de la Reserva:</span>
-                                    <span class="reservation-id-class">${reservation._id}</span>
-                                </div>
-                                <div class="reservation-owner">
-                                    <span class="label">Propietario:</span>
-                                    <span class="value">${reservation.owner}</span>
-                                </div>
-                                <div class="reservation-date">
-                                    <span class="label">Fecha:</span>
-                                    <span class="value">${reservation.date}</span>
-                                </div>
-                                <div class="reservation-time">
-                                    <span class="label">Hora:</span>
-                                    <span class="value">${reservation.time}</span>
-                                </div>
-                                <div class="reservation-people">
-                                    <span class="label">Personas:</span>
-                                    <span class="value">${reservation.people}</span>
-                                </div>
-                                <div class="reservation-actions">
-                                    <button class="id-accept" id ="">Aceptar</button>
-                                    <button class="id-decline" id ="">Declinar</button>
-                                </div>
-                            </div>
-                        `;
-                        $(".reservations-list").append(reservationHTML);
-                    });
+    //                 response.reservations.forEach(reservation => {
+    //                     let reservationHTML = `
+    //                         <div class="reservation-card">
+    //                             <div class="reservation-id" data-id="${reservation._id}">
+    //                                 <span class="label">ID de la Reserva:</span>
+    //                                 <span class="reservation-id-class">${reservation._id}</span>
+    //                             </div>
+    //                             <div class="reservation-owner">
+    //                                 <span class="label">Propietario:</span>
+    //                                 <span class="value">${reservation.owner}</span>
+    //                             </div>
+    //                             <div class="reservation-date">
+    //                                 <span class="label">Fecha:</span>
+    //                                 <span class="value">${reservation.date}</span>
+    //                             </div>
+    //                             <div class="reservation-time">
+    //                                 <span class="label">Hora:</span>
+    //                                 <span class="value">${reservation.time}</span>
+    //                             </div>
+    //                             <div class="reservation-people">
+    //                                 <span class="label">Personas:</span>
+    //                                 <span class="value">${reservation.people}</span>
+    //                             </div>
+    //                             <div class="reservation-actions">
+    //                                 <button class="id-accept" id ="">Aceptar</button>
+    //                                 <button class="id-decline" id ="">Declinar</button>
+    //                             </div>
+    //                         </div>
+    //                     `;
+    //                     $(".reservations-list").append(reservationHTML);
+    //                 });
     
-                    // Asignar eventos a los botones de aceptar y rechazar
-                    $(".id-accept").click(function () {
-                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
-                        acceptReservation(reservationId);
-                    });
+    //                 // Asignar eventos a los botones de aceptar y rechazar
+    //                 $(".id-accept").click(function () {
+    //                     let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
+    //                     acceptReservation(reservationId);
+    //                 });
                     
-                    $(".id-decline").click(function () {
-                        let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
-                        declineReservation(reservationId);
-                    });
+    //                 $(".id-decline").click(function () {
+    //                     let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
+    //                     declineReservation(reservationId);
+    //                 });
 
-                } else {
-                    alert("❌ No se pudieron cargar las reservas.");
-                }
-            },
-            error: function (error) {
-                alert("⚠️ Error al conectar con el servidor.");
-                console.error("Error:", error);
-            }
-        });
-    }
+    //             } else {
+    //                 alert("❌ No se pudieron cargar las reservas.");
+    //             }
+    //         },
+    //         error: function (error) {
+    //             alert("⚠️ Error al conectar con el servidor.");
+    //             console.error("Error:", error);
+    //         }
+    //     });
+    // }
     
     function acceptReservation(reservationId) {
         $.ajax({
