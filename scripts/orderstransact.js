@@ -109,7 +109,7 @@ $(document).ready(function () {
                             <div class="reservation-card">
                             <div class="reservation-id">
                                 <span class="label">ID del Pedido:</span>
-                                <span class="value order-id">${order._id}</span>
+                                <span class="value order-id">${order._id.$oid}</span>
                             </div>
                                 <div class="reservation-name">
                                     <span class="label">Cliente:</span>
@@ -224,7 +224,7 @@ $(document).ready(function () {
                             <div class="reservation-card">
                                 <div class="reservation-id">
                                     <span class="label">ID de la Reserva:</span>
-                                    <span class="value reservation-id">${reservation._id}</span>
+                                    <span class="value reservation-id">${reservation._id.$oid}</span>
                                 </div>
                                 <div class="reservation-owner">
                                     <span class="label">Propietario:</span>
