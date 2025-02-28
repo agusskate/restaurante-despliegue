@@ -360,7 +360,7 @@ $(document).ready(function () {
                         if (order.username === session) {
                             let orderHTML = `
                                 <div class="notification-item">
-                                    <span class="label">Pedido:</span>
+                                    <span class="label">Pedido: ${order._id}</span>
                                     <span class="value">${order.total} €</span>
                                     <span class="label">Estado:</span>
                                     <span class="status">${order.status}</span>
