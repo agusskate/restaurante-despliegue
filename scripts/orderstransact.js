@@ -168,10 +168,13 @@ $(document).ready(function () {
     
 
     function acceptOrder(orderId) {
+        console.log("hh:", orderId);
         $.ajax({
             type: "POST",
             url: "https://yonko-api.vercel.app/api/order/accept",
             contentType: "application/json",
+
+            
             data: JSON.stringify({ order_id: orderId }),
             success: function (response) {
                 if (response.success) {
