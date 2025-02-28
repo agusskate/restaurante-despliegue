@@ -110,7 +110,7 @@ body {
     margin-top: 15px;
 }
 
-.accept-btn, .decline-btn {
+.accept-btn, .decline-btn, .id-accept, .id-decline {
     padding: 8px 15px;
     border: none;
     cursor: pointer;
@@ -118,21 +118,21 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.accept-btn {
+.accept-btn, .id-accept {
     background-color: #28a745;
     color: #fff;
 }
 
-.decline-btn {
+.decline-btn, .id-decline {
     background-color: #dc3545;
     color: #fff;
 }
 
-.accept-btn:hover {
+.accept-btn:hover, .id-accept:hover {
     background-color: #218838; /* Hover verde más oscuro */
 }
 
-.decline-btn:hover {
+.decline-btn:hover, .id-decline:hover {
     background-color: #c82333; /* Hover rojo más oscuro */
 }
 
