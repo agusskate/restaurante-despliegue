@@ -317,7 +317,7 @@ $(document).ready(function () {
     }
     
 
-    //CARGAR NOTIFICACIONES
+    //CARGAR NOTIFICACIONES ()
     function loadNotifications() {
         let session = localStorage.getItem("session") || "Anónimo";
     
