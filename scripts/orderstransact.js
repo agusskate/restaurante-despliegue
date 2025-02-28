@@ -88,6 +88,7 @@ $(document).ready(function () {
                     $("#cart-items-list").empty();
                     $("#total-price").html("00.00");
                     loadOrders(); // Actualizar lista de pedidos
+                    loadNotifications()
                 } else {
                     alert("❌ Error en la compra: " + response.message);
                 }
