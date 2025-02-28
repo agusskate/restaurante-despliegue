@@ -100,71 +100,88 @@ $(document).ready(function () {
     });
 
     //ORDERS
-    function loadOrders() {
-        $.ajax({
-            type: "GET",
-            url: "https://yonko-api.vercel.app/api/orders",
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
+// Cargar Pedidos
+function loadOrders() {
+    $.ajax({
+        type: "GET",
+        url: "https://yonko-api.vercel.app/api/orders",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            
+            if (response.success) {
+                $(".orders-list").empty(); // Limpiar la lista antes de agregar nuevos pedidos
                 
-                if (response.success) {
-                    $(".orders-list").empty(); // Limpiar la lista antes de agregar nuevos pedidos
-                    
-                    response.orders.forEach(order => {
+                let hasPending = false; // Para verificar si hay pedidos pendientes
+                
+                response.orders.forEach(order => {
+                    // Solo mostrar pedidos con transact: false
+                    if (order.transact === false) {
+                        hasPending = true;
+                        
                         let productsHTML = order.products.map(p => `<li>${p.name} - ${p.price} €</li>`).join("");
-    
+
                         let orderHTML = `
-                            <div class="reservation-card">
-                            <div class="reservation-id">
-                                <span class="label">ID del Pedido:</span>
-                                <span class="value order-id">${order._id}</span>
-                            </div>
-                                <div class="reservation-name">
+                            <div class="order-card">
+                                <div class="order-id">
+                                    <span class="label">ID del Pedido:</span>
+                                    <span class="value order-id-class">${order._id}</span>
+                                </div>
+                                <div class="order-name">
                                     <span class="label">Cliente:</span>
                                     <span class="value">${order.username}</span>
                                 </div>
-                                <div class="reservation-total">
+                                <div class="order-total">
                                     <span class="label">Total:</span>
                                     <span class="value">${order.total} €</span>
                                 </div>
-                                <div class="reservation-products">
+                                <div class="order-products">
                                     <span class="label">Productos:</span>
-                                    <ul class="reservation-products-list">
+                                    <ul class="order-products-list">
                                         ${productsHTML}
                                     </ul>
                                 </div>
-                                <div class="reservation-actions">
+                                <div class="order-actions">
                                     <button class="accept-btn">Aceptar</button>
                                     <button class="decline-btn">Declinar</button>
                                 </div>
                             </div>
                         `;
                         $(".orders-list").append(orderHTML);
-                    });
+                    }
+                });
 
-                      // Asignar eventos a los botones de aceptar y rechazar
-                      $(".accept-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").find(".order-id").text();
-                        acceptOrder(orderId);
-                    });
-
-                    $(".decline-btn").click(function () {
-                        let orderId = $(this).closest(".reservation-card").find(".order-id").text();
-                        declineOrder(orderId);
-                    });
-
-
-                } else {
-                    alert("❌ No se pudieron cargar los pedidos.");
+                // Si no hay pedidos con transact: false
+                if (!hasPending) {
+                    $(".orders-list").append(`
+                        <div class="no-orders">
+                            <p>✅ No hay pedidos pendientes.</p>
+                        </div>
+                    `);
                 }
-            },
-            error: function (error) {
-                alert("⚠️ Error al conectar con el servidor.");
-                console.error("Error:", error);
+
+                // Asignar eventos a los botones de aceptar y rechazar
+                $(".accept-btn").click(function () {
+                    let orderId = $(this).closest(".order-card").find(".order-id-class").text();
+                    acceptOrder(orderId);
+                });
+
+                $(".decline-btn").click(function () {
+                    let orderId = $(this).closest(".order-card").find(".order-id-class").text();
+                    declineOrder(orderId);
+                });
+
+            } else {
+                alert("❌ No se pudieron cargar los pedidos.");
             }
-        });
-    }
+        },
+        error: function (error) {
+            alert("⚠️ Error al conectar con el servidor.");
+            console.error("Error:", error);
+        }
+    });
+}
+
     
 
     function acceptOrder(orderId) {
