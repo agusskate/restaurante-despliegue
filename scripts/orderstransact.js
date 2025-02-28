@@ -256,11 +256,12 @@ $(document).ready(function () {
                         let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
                         acceptReservation(reservationId);
                     });
-    
+                    
                     $(".id-decline").click(function () {
                         let reservationId = $(this).closest(".reservation-card").find(".reservation-id").text();
                         declineReservation(reservationId);
                     });
+
                 } else {
                     alert("❌ No se pudieron cargar las reservas.");
                 }
