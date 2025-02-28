@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/images/logoYonko.png" alt="Logo del proyecto">
+  <img src="./assets/images/logoYonko.png" alt="Logo del proyecto" width="200">
 </div>
 
 # Yonko Sushi Store
