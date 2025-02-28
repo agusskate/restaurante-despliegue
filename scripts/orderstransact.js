@@ -205,6 +205,26 @@ $(document).ready(function () {
             }
         });
     }
+    function declineOrder(orderId) {
+        $.ajax({
+            type: "POST",
+            url: "https://yonko-api.vercel.app/api/order/decline",
+            contentType: "application/json",
+            data: JSON.stringify({ order_id: orderId }),
+            success: function (response) {
+                if (response.success) {
+                    alert("❌ Order rechazada y eliminada.");
+                    loadOrders();                    //Refrescar lista
+                } else {
+                    alert("❌ Error al eliminar: " + response.message);
+                }
+            },
+            error: function (error) {
+                alert("⚠️ Error al conectar con el servidor.");
+                console.error("Error:", error);
+            }
+        });
+    }
 
 //Cargar Reservas
 function loadReservations() {
