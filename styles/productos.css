@@ -512,7 +512,7 @@ body {
   .item__button {
     font-family: 'Japan', sans-serif !important;
     background: linear-gradient(45deg, #ffd700, #ffac33);
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 12px 20px;
     font-size: 16px;

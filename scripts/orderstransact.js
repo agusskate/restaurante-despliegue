@@ -28,7 +28,7 @@ $(document).ready(function () {
         $(".popup-overlay").fadeOut();
     });
 
-    //pop up notificaciones
+
     $(".popup-overlay-noti").hide();
     $(".notification-icon").click(function () {
         $(".popup-overlay-noti").fadeIn();
@@ -47,7 +47,6 @@ $(document).ready(function () {
         let total = 0;
         let username = localStorage.getItem("session") || "Anónimo";
     
-        // Recorrer los productos en el carrito
         $("#cart-items-list .cart-item").each(function () {
             let itemName = $(this).find(".product-name").text().trim();
             let itemPrice = parseFloat($(this).find(".product-price").text().replace(" €", "").trim());
@@ -71,7 +70,6 @@ $(document).ready(function () {
             total: total.toFixed(2)
         };
     
-        // Enviar pedido a la API
         $.ajax({
             type: "POST",
             url: "https://yonko-api.vercel.app/api/order",
@@ -83,11 +81,10 @@ $(document).ready(function () {
                 if (response.success) {
                     alert("✅ Pedido realizado correctamente.");
     
-                    // Limpiar carrito
                     localStorage.removeItem("cartData");
                     $("#cart-items-list").empty();
                     $("#total-price").html("00.00");
-                    loadOrders(); // Actualizar lista de pedidos
+                    loadOrders();
                     loadNotifications()
                 } else {
                     alert("❌ Error en la compra: " + response.message);
@@ -110,9 +107,9 @@ $(document).ready(function () {
                 console.log(response);
                 
                 if (response.success) {
-                    $(".orders-list").empty(); // Limpiar la lista antes de agregar nuevos pedidos
+                    $(".orders-list").empty();
                     
-                    let hasPending = false; // Para verificar si hay pedidos pendientes
+                    let hasPending = false;
                     
                     response.orders.forEach(order => {
                         // Solo mostrar pedidos con transact: false
@@ -160,7 +157,7 @@ $(document).ready(function () {
                         `);
                     }
     
-                    // Asignar eventos a los botones de aceptar y rechazar
+
                     $(".accept-btn").click(function () {
                         let orderId = $(this).closest(".reservation-card").find(".order-id").text();
                         acceptOrder(orderId);
@@ -186,13 +183,13 @@ $(document).ready(function () {
     function acceptOrder(orderId) {
         $.ajax({
             type: "POST",
-            url: "https://yonko-api.vercel.app/api/order/decline",
+            url: "https://yonko-api.vercel.app/api/order/accept",
             contentType: "application/json",
             data: JSON.stringify({ order_id: orderId }),
             success: function (response) {
                 if (response.success) {
                     alert("✅ Order aceptada.");
-                    loadOrders();                    //Refrescar lista
+                    loadOrders();
                 } else {
                     alert("❌ Error: " + response.message);
                 }
@@ -212,7 +209,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     alert("❌ Order rechazada y eliminada.");
-                    loadOrders();                    //Refrescar lista
+                    loadOrders();
                 } else {
                     alert("❌ Error al eliminar: " + response.message);
                 }
@@ -232,12 +229,11 @@ function loadReservations() {
         dataType: "json",
         success: function (response) {
             if (response.success) {
-                $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
+                $(".reservations-list").empty();
                 
-                let hasPending = false; // Paraverificar si hay reservas pendientes
+                let hasPending = false
 
                 response.reservations.forEach(reservation => {
-                    // Solo imprimir si transact es FALSE
                     if (reservation.transact === false) {
                         hasPending = true;
 
@@ -273,7 +269,7 @@ function loadReservations() {
                     }
                 });
 
-                // Si no hay reservas con transact: false
+
                 if (!hasPending) {
                     $(".reservations-list").append(`
                         <div class="no-reservations">
@@ -282,7 +278,7 @@ function loadReservations() {
                     `);
                 }
 
-                // Asignar eventos a los botones de aceptar y rechazar
+ 
                 $(".id-accept").click(function () {
                     let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
                     acceptReservation(reservationId);
@@ -304,70 +300,6 @@ function loadReservations() {
     });
 }
 
-    
-    //RESERVAS
-    // function loadReservations() {
-    //     $.ajax({
-    //         type: "GET",
-    //         url: "https://yonko-api.vercel.app/api/reservations",
-    //         dataType: "json",
-    //         success: function (response) {
-    //             if (response.success) {
-    //                 $(".reservations-list").empty(); // Limpiar la lista antes de agregar nuevas reservas
-    
-    //                 response.reservations.forEach(reservation => {
-    //                     let reservationHTML = `
-    //                         <div class="reservation-card">
-    //                             <div class="reservation-id" data-id="${reservation._id}">
-    //                                 <span class="label">ID de la Reserva:</span>
-    //                                 <span class="reservation-id-class">${reservation._id}</span>
-    //                             </div>
-    //                             <div class="reservation-owner">
-    //                                 <span class="label">Propietario:</span>
-    //                                 <span class="value">${reservation.owner}</span>
-    //                             </div>
-    //                             <div class="reservation-date">
-    //                                 <span class="label">Fecha:</span>
-    //                                 <span class="value">${reservation.date}</span>
-    //                             </div>
-    //                             <div class="reservation-time">
-    //                                 <span class="label">Hora:</span>
-    //                                 <span class="value">${reservation.time}</span>
-    //                             </div>
-    //                             <div class="reservation-people">
-    //                                 <span class="label">Personas:</span>
-    //                                 <span class="value">${reservation.people}</span>
-    //                             </div>
-    //                             <div class="reservation-actions">
-    //                                 <button class="id-accept" id ="">Aceptar</button>
-    //                                 <button class="id-decline" id ="">Declinar</button>
-    //                             </div>
-    //                         </div>
-    //                     `;
-    //                     $(".reservations-list").append(reservationHTML);
-    //                 });
-    
-    //                 // Asignar eventos a los botones de aceptar y rechazar
-    //                 $(".id-accept").click(function () {
-    //                     let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
-    //                     acceptReservation(reservationId);
-    //                 });
-                    
-    //                 $(".id-decline").click(function () {
-    //                     let reservationId = $(this).closest(".reservation-card").find(".reservation-id-class").text();
-    //                     declineReservation(reservationId);
-    //                 });
-
-    //             } else {
-    //                 alert("❌ No se pudieron cargar las reservas.");
-    //             }
-    //         },
-    //         error: function (error) {
-    //             alert("⚠️ Error al conectar con el servidor.");
-    //             console.error("Error:", error);
-    //         }
-    //     });
-    // }
     
     function acceptReservation(reservationId) {
         $.ajax({
@@ -399,7 +331,7 @@ function loadReservations() {
             success: function (response) {
                 if (response.success) {
                     alert("❌ Reserva rechazada y eliminada.");
-                    loadReservations();                    //Refrescar lista
+                    loadReservations();
                 } else {
                     alert("❌ Error al eliminar: " + response.message);
                 }
@@ -412,11 +344,11 @@ function loadReservations() {
     }
     
 
-    //CARGAR NOTIFICACIONES ()
+
     function loadNotifications() {
         let session = localStorage.getItem("session") || "Anónimo";
     
-        $("#notifications-items-list").empty(); // Limpiamos lista
+        $("#notifications-items-list").empty();
     
         $.ajax({
             type: "GET",
@@ -473,7 +405,7 @@ function loadReservations() {
     }
     
 
-    // Cargar las reservas y pedidos al iniciar la página
+    //Cargar
     loadNotifications()
     loadReservations();
     loadOrders();
